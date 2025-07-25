@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Add to Your Vault</h2>
+    <form method="POST" action="{{ url_for('main.add_vault') }}">
+        <div class="form-group">
+            <label for="name">Item Name</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="data">Data (passwords, instructions, etc.)</label>
+            <textarea name="data" id="data" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn primary">Save to Vault</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Secure Your Digital Legacy</h1>
+    <p>Ensure your loved ones can access your important accounts when they need to</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('auth.register') }}" class="btn primary">Get Started</a>
+        <a href="{{ url_for('auth.login') }}" class="btn secondary">Login</a>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature">
+        <h3>Secure Storage</h3>
+        <p>Encrypt and store your passwords and documents safely</p>
+    </div>
+    <div class="feature">
+        <h3>Automated Access</h3>
+        <p>Grant access automatically after a period of inactivity</p>
+    </div>
+    <div class="feature">
+        <h3>Peace of Mind</h3>
+        <p>Know your digital life is protected and accessible when needed</p>
+    </div>
+</div>
+{% endblock %}

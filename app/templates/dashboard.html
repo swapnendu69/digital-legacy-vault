@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Your Digital Legacy Vault</h2>
+<p>Last login: {{ current_user.last_login.strftime('%Y-%m-%d %H:%M') if current_user.last_login else 'Never' }}</p>
+<p>Days inactive: {{ days_inactive }}</p>
+
+<div class="dashboard-sections">
+    <section class="vault-section">
+        <h3>Your Vault Items</h3>
+        <a href="{{ url_for('main.add_vault') }}" class="btn primary">Add New Item</a>
+        
+        {% if vaults %}
+            <div class="vault-items">
+                {% for vault in vaults %}
+                    <div class="vault-item">
+                        <h4>{{ vault.name }}</h4>
+                        <p>Last updated: {{ vault.updated_at.strftime('%Y-%m-%d') }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No items in your vault yet.</p>
+        {% endif %}
+    </section>
+    
+    <section class="successors-section">
+        <h3>Your Successors</h3>
+        <a href="{{ url_for('main.add_successor') }}" class="btn primary">Add Successor</a>
+        
+        {% if successors %}
+            <div class="successor-list">
+                {% for successor in successors %}
+                    <div class="successor-item">
+                        <h4>{{ successor.name }}</h4>
+                        <p>{{ successor.email }}</p>
+                        <p>{{ successor.relationship }}</p>
+                        {% if successor.is_activated %}
+                            <p class="activated">Access granted on {{ successor.activation_date.strftime('%Y-%m-%d') }}</p>
+                        {% else %}
+                            <p class="pending">Access pending (will activate after 90 days inactivity)</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No successors added yet.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
