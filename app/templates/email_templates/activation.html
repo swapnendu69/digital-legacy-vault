@@ -1,0 +1,10 @@
+<p>Dear {{ user.email }},</p>
+
+<p>Your Digital Legacy Vault has been inactive for more than 90 days.</p>
+
+<p>As per your instructions, we have granted access to your successors.</p>
+
+<p>If this was a mistake, please <a href="{{ url_for('auth.login', _external=True) }}">login immediately</a> to prevent further access grants.</p>
+
+<p>Best regards,<br>
+Digital Legacy Vault Team</p>
